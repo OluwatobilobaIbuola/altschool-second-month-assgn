@@ -72,7 +72,7 @@ export const Users = ({ setUsers }) => {
             Next
           </button>
         </Nav>
-        <div style={{ height: "5px", width: "100%" }}>
+        <div style={{ height: "5px", width: "90%", marginInline: "auto" }}>
           {isFetching && <LinearProgress color="inherit" />}
         </div>
       </div>
