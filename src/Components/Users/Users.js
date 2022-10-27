@@ -81,8 +81,8 @@ export const Users = ({ setUsers }) => {
       </NavContainer>
       <Wrapper flow="row wrap" align="stretch" justfy="flex-start">
         {users?.results?.length > 1 &&
-          users?.results?.map((user, index) => {
-            return <User user={user} index={index} />;
+          users?.results?.map((user) => {
+            return <User user={user} />;
           })}
       </Wrapper>
     </Box>

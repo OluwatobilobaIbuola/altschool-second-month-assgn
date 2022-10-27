@@ -72,10 +72,10 @@ const Icon = styled.div`
   }
 `;
 
-export const User = ({ user, index }) => {
+export const User = ({ user }) => {
   return (
-    <FadeIn key={index}>
-      <Container>
+    <FadeIn key={`${user.id.value}`}>
+      <Container key={`${user.id.value}`}>
         <Circle />
         <Image src={user.picture.large} />
         <Info>
