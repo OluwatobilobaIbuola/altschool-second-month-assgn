@@ -6,12 +6,13 @@ import { Container } from "../../Components/styles/Container.style";
 import { Wrapper } from "../../Components/styles/Wrapper.style";
 import { User } from "../../Components/User/User";
 import { Text } from "../../Components/styles/Text";
-import { Nav } from "./style";
+import { Nav, NavContainer } from "./style";
 import { getUsers } from "../../services/apis";
 import { useQuery } from "react-query";
 import { useEffect } from "react";
 import { Skeleton } from "../WithSuspense";
 import { Error } from "../ErrorMessage/Error";
+import { mobile } from "../../responsive";
 
 const PageButton = ({ pg, setPage }) => {
   return <button onClick={() => setPage(pg)}>{pg}</button>;
@@ -19,6 +20,7 @@ const PageButton = ({ pg, setPage }) => {
 
 export const Users = ({ setUsers }) => {
   const [page, setPage] = useState(1);
+  const [screenSize, setScreenSize] = useState(undefined);
   const {
     isLoading,
     isError,
@@ -33,6 +35,13 @@ export const Users = ({ setUsers }) => {
   useEffect(() => {
     setUsers(users);
   }, [users]);
+
+  useEffect(() => {
+    const handleResize = () => setScreenSize(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const prevPage = () => setPage((prev) => prev - 1);
   const nextPage = () => setPage((prev) => prev + 1);
@@ -50,24 +59,18 @@ export const Users = ({ setUsers }) => {
 
   return (
     <Box padding="40px 0" ml="auto">
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          width: "50%",
-          marginLeft: "auto",
-        }}
-      >
+      <NavContainer>
         <Nav>
           <button onClick={prevPage} disabled={isPreviousData || page === 1}>
             Prev
           </button>
-          {pagesArray.map((pg) => (
-            <PageButton key={pg} pg={pg} setPage={setPage} />
-          ))}
-          <Text padding="0 0.5em">Page {users?.info?.page}</Text>
+          {screenSize > 768 &&
+            pagesArray.map((pg) => (
+              <PageButton key={pg} pg={pg} setPage={setPage} />
+            ))}
+          <Text ws="nowrap" padding="0 0.5em">
+            Page {users?.info?.page}
+          </Text>
           <button onClick={nextPage} disabled={isPreviousData}>
             Next
           </button>
@@ -75,7 +78,7 @@ export const Users = ({ setUsers }) => {
         <div style={{ height: "5px", width: "90%", marginInline: "auto" }}>
           {isFetching && <LinearProgress color="inherit" />}
         </div>
-      </div>
+      </NavContainer>
       <Wrapper flow="row wrap" align="stretch" justfy="flex-start">
         {users?.results?.length > 1 &&
           users?.results?.map((user, index) => {
