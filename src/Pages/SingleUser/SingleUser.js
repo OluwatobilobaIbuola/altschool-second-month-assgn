@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 `;
 
 const ImgContainer = styled.div`
-  flex: 1;
+  min-width: 50%;
 `;
 
 const Image = styled.img`
@@ -24,13 +24,14 @@ const Image = styled.img`
 `;
 
 const InfoContainer = styled.div`
-  flex: 1;
-  padding: 0px 50px;
+  min-width: 50%;
+  padding: 0px 30px;
   ${mobile({ padding: "10px" })}
 `;
 
 const Title = styled.h1`
   font-weight: 200;
+  word-break: break-all;
 `;
 
 const Desc = styled.p`
@@ -45,9 +46,6 @@ const Phone = styled.div`
 export const SingleUser = ({ users }) => {
   const { userId } = useParams();
   const user = users?.results?.find((user) => user.id.value === userId);
-
-  console.log(userId);
-  console.log(user);
 
   return (
     <Container>
