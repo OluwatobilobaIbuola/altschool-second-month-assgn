@@ -4,6 +4,8 @@ export const EventValues = createContext();
 
 export const EventValuesContext = ({ children }) => {
   const [mode, setMode] = useState(false);
+  const [screenSize, setScreenSize] = useState(undefined);
+
   const toggleTheme = (mode) => {
     if (mode === "false") {
       setMode(true);
@@ -20,7 +22,9 @@ export const EventValuesContext = ({ children }) => {
   };
 
   return (
-    <EventValues.Provider value={{ toggleTheme, mode, setMode }}>
+    <EventValues.Provider
+      value={{ screenSize, setScreenSize, toggleTheme, mode, setMode }}
+    >
       {children}
     </EventValues.Provider>
   );

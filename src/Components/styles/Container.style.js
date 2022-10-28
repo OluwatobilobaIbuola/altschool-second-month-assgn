@@ -11,4 +11,5 @@ export const Container = styled.div`
   top: ${({ top }) => (top ? top : "")};
   font-family: ${({ ff }) => (ff ? ff : "")};
   z-index: ${({ zIndex }) => (zIndex ? zIndex : "")};
+  transition: background 0.4s ease-in-out;
 `;

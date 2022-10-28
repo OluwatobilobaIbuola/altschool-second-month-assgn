@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { mobile } from "../../responsive";
+import MenuIcon from "@mui/icons-material/Menu";
 
 export const Container = styled.div`
   background: ${({ theme }) => theme.themeMode};
@@ -54,4 +56,10 @@ export const Nav = styled.nav`
       }
     }
   }
+  transition: 0.4s ease-in-out;
+  ${mobile({ display: "none" })}
+`;
+
+export const MenuBurger = styled(MenuIcon)`
+  color: inherit;
 `;

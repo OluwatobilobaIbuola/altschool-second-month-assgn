@@ -3,12 +3,12 @@ import ThemeMode from "../../Components/ThemeMode/theme.mode";
 
 import { EventValues } from "../../Components/context/context";
 import { Wrapper } from "../../Components/styles/Wrapper.style";
-import { BoxEffect, Nav, Container } from "./styles";
+import { BoxEffect, Nav, Container, MenuBurger } from "./styles";
 import { Box } from "../../Components/styles/Box.styled";
 import { Link, NavLink } from "react-router-dom";
 
 export const Header = () => {
-  const { mode } = useContext(EventValues);
+  const { mode, screenSize } = useContext(EventValues);
   return (
     <Container
       bb={
@@ -42,6 +42,7 @@ export const Header = () => {
               </li>
             </ul>
           </Nav>
+          {screenSize < 768 && <MenuBurger />}
         </Wrapper>
       </Box>
     </Container>

@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  FavoriteBorderOutlined,
-  SearchOutlined,
-  ShoppingCartOutlined,
-} from "@mui/icons-material";
+import { FavoriteBorderOutlined, SearchOutlined } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FadeIn, FadeInLeft } from "../styles/animations";

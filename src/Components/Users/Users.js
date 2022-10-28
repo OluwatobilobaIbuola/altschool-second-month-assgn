@@ -13,6 +13,8 @@ import { useEffect } from "react";
 import { Skeleton } from "../WithSuspense";
 import { Error } from "../ErrorMessage/Error";
 import { mobile } from "../../responsive";
+import { EventValues } from "../context/context";
+import { useContext } from "react";
 
 const PageButton = ({ pg, setPage }) => {
   return <button onClick={() => setPage(pg)}>{pg}</button>;
@@ -20,7 +22,7 @@ const PageButton = ({ pg, setPage }) => {
 
 export const Users = ({ setUsers }) => {
   const [page, setPage] = useState(1);
-  const [screenSize, setScreenSize] = useState(undefined);
+  const {screenSize, setScreenSize} = useContext(EventValues);
   const {
     isLoading,
     isError,

@@ -1,11 +1,13 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
+import { welcomeRobo } from "../assets";
 
 const NotFound = () => {
   const location = useLocation();
   return (
     <DisplayWrapper>
+      <Image src={welcomeRobo} alt="robot" />
       <CircleStyled>
         <h1>
           404...
@@ -24,7 +26,7 @@ export default NotFound;
 
 const DisplayWrapper = styled.div`
   width: 100vw;
-  background: rgba(1, 1, 1, 0.3);
+  background-color: ${({ theme }) => theme.themeMode};
   top: 0;
   right: 0;
   bottom: 0;
@@ -44,4 +46,10 @@ const CircleStyled = styled.div`
   p {
     font-size: 24px;
   }
+`;
+
+const Image = styled.img`
+  position: absolute;
+  right: 10px;
+  top: 10px;
 `;

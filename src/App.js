@@ -6,6 +6,7 @@ import { GlobalStyled } from "./Components/styles/GlobalStyled";
 import { ThemeProvider } from "styled-components";
 import { BrowserRouter } from "react-router-dom";
 import "./Components/styles/App.css";
+import { ErrorBoundary } from "./Components/ErrorMessage/ErrorBoundary";
 
 function App() {
   const queryClient = new QueryClient();
@@ -34,7 +35,9 @@ function App() {
         <ThemeProvider theme={theme}>
           <BrowserRouter>
             <GlobalStyled />
-            <Pages />
+            <ErrorBoundary>
+              <Pages />
+            </ErrorBoundary>
           </BrowserRouter>
         </ThemeProvider>
       </QueryClientProvider>

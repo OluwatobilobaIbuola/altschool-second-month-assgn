@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Error = () => {
   const reRoute = () => {
@@ -25,7 +25,7 @@ export const Error = () => {
 
 export const DisplayWrapper = styled.div`
   width: 100vw;
-  background: rgba(1, 1, 1, 0.5);
+  background: rgba(1, 1, 1, 0.3);
   top: 0;
   right: 0;
   bottom: 0;
@@ -36,9 +36,17 @@ export const DisplayWrapper = styled.div`
 `;
 export const Box = styled.div`
   padding: 2em;
-  background-color: ${({ theme }) => theme.themeMode};
-  color: ${({ theme }) => theme.modeReverse};
+  background-color: ${({ theme }) => theme.themeModeThree};
+  color: ${({ theme }) => theme.modeReverseTwo};
   border-radius: 4px;
+  border: ${({ theme }) => {
+    return css`1px solid ${theme.modeReverseTwo}`;
+  }};
+  > p {
+    a {
+      text-decoration: underline;
+    }
+  }
 `;
 const CircleStyled = styled.div`
   display: flex;
