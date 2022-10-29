@@ -10,9 +10,12 @@ export const Container = styled.div`
   position: ${({ pos }) => (pos ? pos : "")};
   width: ${({ w }) => (w ? w : "")};
   margin: ${({ m }) => (m ? m : "")};
-  top: ${({ top }) => (top ? top : "")};
+  top: 0;
+  left: 0;
+  right: 0;
   font-family: ${({ ff }) => (ff ? ff : "")};
   z-index: ${({ zIndex }) => (zIndex ? zIndex : "")};
+  border: ${({ b }) => (b ? b : "")};
 `;
 
 export const BoxEffect = styled.div`
@@ -24,6 +27,7 @@ export const BoxEffect = styled.div`
   background-color: ${({ theme }) => theme.primary};
   filter: blur(100px);
   z-index: -1;
+  width: 100%;
 `;
 export const Nav = styled.nav`
   display: flex;

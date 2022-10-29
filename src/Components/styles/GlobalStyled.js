@@ -11,6 +11,7 @@ export const GlobalStyled = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size:16px;
+    background:${({ theme }) => theme.themeMode};
   }
 
   ::-webkit-scrollbar {

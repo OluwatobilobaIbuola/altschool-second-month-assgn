@@ -15,9 +15,9 @@ const NotFound = WithSuspense(
 export const Pages = () => {
   const [users, setUsers] = useState(undefined);
   return (
-    <Container minh="100vh">
+    <Container pos="relative" minh="100vh">
       <Header />
-      <Container m="70px 0 0 0">
+      <Container maxW="1980px" m="70px auto 0">
         <Routes>
           <Route
             path="/"

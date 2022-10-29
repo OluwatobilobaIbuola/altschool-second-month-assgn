@@ -26,8 +26,6 @@ export const Header = () => {
       }
       h="70px"
       pos="fixed"
-      w="100%"
-      top="0"
       zIndex="10"
     >
       <BoxEffect></BoxEffect>
