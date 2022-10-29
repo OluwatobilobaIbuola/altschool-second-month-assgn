@@ -20,7 +20,7 @@ const Image = styled.img`
   width: 100%;
   height: 90vh;
   object-fit: cover;
-  ${mobile({ height: "70vh" })}
+  ${mobile({ height: "70vh", objectFit: "contain" })}
 `;
 
 const InfoContainer = styled.div`
@@ -45,7 +45,7 @@ const Phone = styled.div`
 
 export const SingleUser = ({ users }) => {
   const { userId } = useParams();
-  const user = users?.results?.find((user) => user.id.value === userId);
+  const user = users?.results?.find((user) => user?.id?.value === userId);
 
   return (
     <Container>

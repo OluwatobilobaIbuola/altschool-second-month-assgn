@@ -22,7 +22,7 @@ const PageButton = ({ pg, setPage }) => {
 
 export const Users = ({ setUsers }) => {
   const [page, setPage] = useState(1);
-  const {screenSize, setScreenSize} = useContext(EventValues);
+  const { screenSize, setScreenSize } = useContext(EventValues);
   const {
     isLoading,
     isError,
@@ -83,8 +83,8 @@ export const Users = ({ setUsers }) => {
       </NavContainer>
       <Wrapper flow="row wrap" align="stretch" justfy="flex-start">
         {users?.results?.length > 1 &&
-          users?.results?.map((user) => {
-            return <User user={user} />;
+          users?.results?.map((user, index) => {
+            return <User user={user} index={index} />;
           })}
       </Wrapper>
     </Box>

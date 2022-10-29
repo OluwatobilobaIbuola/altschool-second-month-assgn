@@ -2,7 +2,7 @@ import React from "react";
 import { FavoriteBorderOutlined, SearchOutlined } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { FadeIn, FadeInLeft } from "../styles/animations";
+import { FadeIn, FadeInLeftIndividual } from "../styles/animations";
 
 const Info = styled.div`
   opacity: 0;
@@ -68,12 +68,12 @@ const Icon = styled.div`
   }
 `;
 
-export const User = ({ user }) => {
+export const User = ({ user, index }) => {
   return (
-    <FadeIn key={`${user.id.value}`}>
-      <Container key={`${user.id.value}`}>
+    <FadeInLeftIndividual index={index} key={user?.id?.value}>
+      <Container>
         <Circle />
-        <Image src={user.picture.large} />
+        <Image src={user?.picture?.large} />
         <Info>
           <Icon>
             <Link to={`/users/${user.id.value}`}>
@@ -85,6 +85,6 @@ export const User = ({ user }) => {
           </Icon>
         </Info>
       </Container>
-    </FadeIn>
+    </FadeInLeftIndividual>
   );
 };
