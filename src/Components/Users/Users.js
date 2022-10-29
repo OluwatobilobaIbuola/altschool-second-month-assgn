@@ -20,13 +20,12 @@ const PageButton = ({ pg, setPage }) => {
   return <button onClick={() => setPage(pg)}>{pg}</button>;
 };
 
-export const Users = ({ setUsers }) => {
+export const Users = ({ setUsers, setIsFetching }) => {
   const [page, setPage] = useState(1);
   const { screenSize } = useContext(EventValues);
   const {
     isLoading,
     isError,
-    error,
     isFetching,
     data: users,
     isPreviousData,
@@ -36,7 +35,8 @@ export const Users = ({ setUsers }) => {
 
   useEffect(() => {
     setUsers(users);
-  }, [users]);
+    setIsFetching(isFetching);
+  }, [users, isFetching]);
 
   const prevPage = () => setPage((prev) => prev - 1);
   const nextPage = () => setPage((prev) => prev + 1);
@@ -70,9 +70,6 @@ export const Users = ({ setUsers }) => {
             Next
           </button>
         </Nav>
-        <div style={{ height: "5px", width: "90%", marginInline: "auto" }}>
-          {isFetching && <LinearProgress color="inherit" />}
-        </div>
       </NavContainer>
       <Wrapper flow="row wrap" align="stretch" justfy="flex-start">
         {users?.results?.length > 1 &&
