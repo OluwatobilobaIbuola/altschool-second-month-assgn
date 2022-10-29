@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import ThemeMode from "../../Components/ThemeMode/theme.mode";
 
 import { EventValues } from "../../Components/context/context";
@@ -8,7 +8,15 @@ import { Box } from "../../Components/styles/Box.styled";
 import { Link, NavLink } from "react-router-dom";
 
 export const Header = () => {
-  const { mode, screenSize } = useContext(EventValues);
+  const { mode, screenSize, setScreenSize } = useContext(EventValues);
+
+  useEffect(() => {
+    const handleResize = () => setScreenSize(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <Container
       bb={

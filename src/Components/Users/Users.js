@@ -22,7 +22,7 @@ const PageButton = ({ pg, setPage }) => {
 
 export const Users = ({ setUsers }) => {
   const [page, setPage] = useState(1);
-  const { screenSize, setScreenSize } = useContext(EventValues);
+  const { screenSize } = useContext(EventValues);
   const {
     isLoading,
     isError,
@@ -37,13 +37,6 @@ export const Users = ({ setUsers }) => {
   useEffect(() => {
     setUsers(users);
   }, [users]);
-
-  useEffect(() => {
-    const handleResize = () => setScreenSize(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-    handleResize();
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   const prevPage = () => setPage((prev) => prev - 1);
   const nextPage = () => setPage((prev) => prev + 1);
