@@ -1,11 +1,11 @@
 import { LinearProgress } from "@mui/material";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { Box } from "../../Components/styles/Box.styled";
-import { Container } from "../../Components/styles/Container.style";
-import { Wrapper } from "../../Components/styles/Wrapper.style";
-import { User } from "../../Components/User/User";
-import { Text } from "../../Components/styles/Text";
+import { Box } from "../styles/Box.styled";
+import { Container } from "../styles/Container.style";
+import { Wrapper } from "../styles/Wrapper.style";
+import { User } from "../User/User";
+import { Text } from "../styles/Text";
 import { Nav, NavContainer } from "./style";
 import { getUsers } from "../../services/apis";
 import { useQuery } from "react-query";
@@ -22,6 +22,7 @@ const PageButton = ({ pg, setPage }) => {
 
 export const Users = ({ setUsers, setIsFetching }) => {
   const [page, setPage] = useState(1);
+  const [result, setResult] = useState(10);
   const { screenSize } = useContext(EventValues);
   const {
     isLoading,
@@ -29,7 +30,7 @@ export const Users = ({ setUsers, setIsFetching }) => {
     isFetching,
     data: users,
     isPreviousData,
-  } = useQuery(["users", page], () => getUsers(page), {
+  } = useQuery(["users", page, result], () => getUsers(page, result), {
     keepPreviousData: true,
   });
 

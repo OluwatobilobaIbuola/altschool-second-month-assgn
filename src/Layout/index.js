@@ -38,7 +38,11 @@ export const Pages = () => {
             path="/"
             element={
               <FadeInLeft>
-                <Home setUsers={setUsers} setIsFetching={setIsFetching} />
+                <Home
+                  users={users}
+                  setUsers={setUsers}
+                  setIsFetching={setIsFetching}
+                />
               </FadeInLeft>
             }
           />
@@ -46,7 +50,11 @@ export const Pages = () => {
             path="home"
             element={
               <FadeInLeft>
-                <Home setUsers={setUsers} setIsFetching={setIsFetching} />
+                <Home
+                  users={users}
+                  setUsers={setUsers}
+                  setIsFetching={setIsFetching}
+                />
               </FadeInLeft>
             }
           />
@@ -61,7 +69,11 @@ export const Pages = () => {
           <Route
             path="users"
             element={
-              <UsersList setUsers={setUsers} setIsFetching={setIsFetching} />
+              <UsersList
+                users={users}
+                setUsers={setUsers}
+                setIsFetching={setIsFetching}
+              />
             }
           >
             <Route
