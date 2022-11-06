@@ -8,3 +8,7 @@ export const Wrapper = styled.div`
   flex-flow: ${({ flow }) => (flow ? flow : "")};
   border-radius: ${({ br }) => br || null};
 `;
+
+export const Container = styled.div`
+  position: relative;
+`;

@@ -6,7 +6,7 @@ import { Container } from "../styles/Container.style";
 import { Wrapper } from "../styles/Wrapper.style";
 import { User } from "../User/User";
 import { Text } from "../styles/Text";
-import { Nav, NavContainer } from "./style";
+import { Button, Nav, NavButton, NavContainer } from "./style";
 import { getUsers } from "../../services/apis";
 import { useQuery } from "react-query";
 import { useEffect } from "react";
@@ -16,8 +16,12 @@ import { mobile } from "../../responsive";
 import { EventValues } from "../context/context";
 import { useContext } from "react";
 
-const PageButton = ({ pg, setPage }) => {
-  return <button onClick={() => setPage(pg)}>{pg}</button>;
+const PageButton = ({ pg, setPage, page }) => {
+  return (
+    <NavButton current={pg === page ? true : false} onClick={() => setPage(pg)}>
+      {pg}
+    </NavButton>
+  );
 };
 
 export const Users = ({ setUsers, setIsFetching }) => {
@@ -57,19 +61,19 @@ export const Users = ({ setUsers, setIsFetching }) => {
     <Box padding="40px 0" ml="auto">
       <NavContainer>
         <Nav>
-          <button onClick={prevPage} disabled={isPreviousData || page === 1}>
+          <Button onClick={prevPage} disabled={isPreviousData || page === 1}>
             Prev
-          </button>
+          </Button>
           {screenSize > 768 &&
             pagesArray.map((pg) => (
-              <PageButton key={pg} pg={pg} setPage={setPage} />
+              <PageButton key={pg} pg={pg} page={page} setPage={setPage} />
             ))}
           <Text ws="nowrap" padding="0 0.5em">
             Page {users?.info?.page}
           </Text>
-          <button onClick={nextPage} disabled={isPreviousData}>
+          <Button onClick={nextPage} disabled={isPreviousData}>
             Next
-          </button>
+          </Button>
         </Nav>
       </NavContainer>
       <Wrapper flow="row wrap" align="stretch" justfy="flex-start">
